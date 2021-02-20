@@ -1,0 +1,99 @@
+body {
+    background-image: url("/assets/images/bg.jpg");
+    opacity: 0.93;
+    font-weight:900;
+    color:#D1A233;
+    padding-bottom: 10%;
+}
+
+header {
+    padding: 0.1rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+main {
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    background-color: #191C21;
+    position: relative;
+    display: grid;
+    margin: 0 17%;
+}
+
+footer {
+    background-color: #191C21;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+footer p {
+    text-indent: 1em;
+}
+
+table {
+    position: relative;
+    font-weight:900;
+}
+
+table caption {
+    font-size: 1.5rem;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    font-family: bold;
+    color: #D1A233;
+}
+
+a:hover {
+    color: lawngreen;
+}
+
+.align-center {
+    justify-content: center;
+    position: relative;
+    display: grid;
+}
+
+.online_status {
+    position: relative;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    padding: 1rem;
+}
+
+.search button#btn_search {
+    background-color: #D1A233;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 10%;
+}
+
+/* Habilitar quando tiver mais opções no menu */
+/* .top-menu {
+    list-style: none; 
+    display: flex;
+    background-color: #191C21;
+    text-align: center;
+} */
