@@ -32,7 +32,7 @@ btn_search.onclick = function() {
                     if (online_status)
                         online_status.textContent = ''
                         
-                    img_center.src = "../images/default.png"
+                    img_center.src = "./assests/images/default.png"
                     not_found.textContent = data.characters.error
                 }
                 else {
@@ -55,13 +55,13 @@ btn_search.onclick = function() {
                 
                     // Character Images
                     if (data.characters.data.vocation === "Knight" || data.characters.data.vocation === "Elite Knight")
-                        img_center.src = "../images/knight.png"
+                        img_center.src = "./assets/images/knight.png"
                     else if (data.characters.data.vocation === "Druid" || data.characters.data.vocation === "Elder Druid")
-                        img_center.src = "../images/druid.png"
+                        img_center.src = "./assets/images/druid.png"
                     else if (data.characters.data.vocation === "Paladin" || data.characters.data.vocation === "Royal Paladin")
-                        img_center.src = "../images/paladin.png"
+                        img_center.src = "./assets/images/paladin.png"
                     else if (data.characters.data.vocation === "Sorcerer" || data.characters.data.vocation === "Master Sorcerer")
-                        img_center.src = "../images/sorcerer.png"
+                        img_center.src = "./assets/images/sorcerer.png"
                     
                     
                     // Table Info
