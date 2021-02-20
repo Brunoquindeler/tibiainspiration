@@ -7,18 +7,6 @@ let character_name_search = document.querySelector("#character_name_search");
 let btn_search = document.querySelector("#btn_search");
 let not_found = document.querySelector("#not_found");
 
-
-
-
-character_name_search.addEventListener('keyup', function(e){
-    var key = e.which || e.keyCode;
-    if (key == 13) { // codigo da tecla enter
-      console.log("Teste")
-    }
-});
-
-
-
 btn_search.onclick = function() {
     if (character_name_search.value != '') {
         let character_search_final = character_name_search.value.replace(" ", "+");
@@ -44,7 +32,7 @@ btn_search.onclick = function() {
                     if (online_status)
                         online_status.textContent = ''
                         
-                    img_center.src = "/assets/images/default.png"
+                    img_center.src = "./assets/images/default.png"
                     not_found.textContent = data.characters.error
                 }
                 else {
@@ -67,13 +55,13 @@ btn_search.onclick = function() {
                 
                     // Character Images
                     if (data.characters.data.vocation === "Knight" || data.characters.data.vocation === "Elite Knight")
-                        img_center.src = "/assets/images/knight.png"
+                        img_center.src = "./assets/images/knight.png"
                     else if (data.characters.data.vocation === "Druid" || data.characters.data.vocation === "Elder Druid")
-                        img_center.src = "/assets/images/druid.png"
+                        img_center.src = "./assets/images/druid.png"
                     else if (data.characters.data.vocation === "Paladin" || data.characters.data.vocation === "Royal Paladin")
-                        img_center.src = "/assets/images/paladin.png"
+                        img_center.src = "./assets/images/paladin.png"
                     else if (data.characters.data.vocation === "Sorcerer" || data.characters.data.vocation === "Master Sorcerer")
-                        img_center.src = "/assets/images/sorcerer.png"
+                        img_center.src = "./assets/images/sorcerer.png"
                     
                     
                     // Table Info
