@@ -7,6 +7,14 @@ let character_name_search = document.querySelector("#character_name_search");
 let btn_search = document.querySelector("#btn_search");
 let not_found = document.querySelector("#not_found");
 
+character_name_search.addEventListener('keyup', function(e){
+    var key = e.which || e.keyCode;
+    if (key == 13) { // Código da tecla enter
+      btn_search.onclick();
+    }
+});
+
+
 btn_search.onclick = function() {
     if (character_name_search.value != '') {
         let character_search_final = character_name_search.value.replace(" ", "+");

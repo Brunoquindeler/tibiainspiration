@@ -3,7 +3,8 @@ body {
     opacity: 0.93;
     font-weight:900;
     color:#D1A233;
-    padding-bottom: 10%;
+    padding-bottom: 12rem;
+    font-family: 'Langar', cursive;
 }
 
 header {
@@ -20,7 +21,6 @@ main {
     background-color: #191C21;
     position: relative;
     display: grid;
-    margin: 0 17%;
 }
 
 footer {
