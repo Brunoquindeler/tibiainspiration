@@ -4,7 +4,6 @@ body {
     opacity: 0.93;
     font-weight:900;
     color:#D1A233;
-    font-family: 'Langar', cursive;
     place-content: center;
     text-align: center;
     display: grid;
@@ -13,6 +12,7 @@ body {
 header {
     padding: 0.1rem;
     font-size: 1.2rem;
+    font-family: 'Langar', cursive;
 }
 
 main {
@@ -43,12 +43,14 @@ table td {
 
 table caption {
     font-size: 1.5rem;
+    font-family: 'Langar', cursive;
 }
 
 a {
     text-decoration: none;
     font-family: bold;
     color: #D1A233;
+    font-family: 'Langar', cursive;
 }
 
 a:hover {
