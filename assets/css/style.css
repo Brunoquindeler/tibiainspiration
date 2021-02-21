@@ -1,9 +1,9 @@
 body {
     background-image: url("../images/bg.jpg");
+    background-size: 100vw 100vh;
     opacity: 0.93;
     font-weight:900;
     color:#D1A233;
-    padding-bottom: 12rem;
     font-family: 'Langar', cursive;
     place-content: center;
     text-align: center;
@@ -19,11 +19,13 @@ main {
     justify-content: center;
     background-color: #191C21;
     position: relative;
+    display: grid;
 }
 
 footer {
     background-color: #191C21;
-    position: fixed;
+    position: relative;
+    display: grid;
     bottom: 0;
     width: 100%;
     text-indent: 1em;
@@ -48,6 +50,14 @@ a:hover {
     color: lawngreen;
 }
 
+p {
+    padding: 0 1rem;
+}
+
+ul {
+    list-style: none;
+}
+
 .online_status {
     position: relative;
     font-size: 1.1rem;
@@ -64,7 +74,7 @@ a:hover {
     background-color: #D1A233;
     font-size: 1rem;
     font-weight: bold;
-    width: 100%;
+    width: 30%;
     padding: 0.5rem;
     margin-left: 0.5rem;
     border: none;
@@ -72,14 +82,33 @@ a:hover {
 }
 
 .search button#btn_search:hover {
-    background-color: #6b4c09;
-    color: rgb(255, 255, 255, 0.8);
+    background-color: lawngreen;
 }
 
-/* Habilitar quando tiver mais opções no menu */
-/* .top-menu {
-    list-style: none; 
+.search button#btn_search:focus {
+    outline: none;
+}
+
+.search input#character_name_search {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5%;
+    color: rgb(28, 27, 31, 0.8);
+    
+}
+
+.search input#character_name_search:focus {
+    outline: none;
+}
+
+.top-menu {
     display: flex;
     background-color: #191C21;
+    align-items: center;
     text-align: center;
-} */
+    place-content: center;
+}
