@@ -43,7 +43,6 @@ btn_search.onclick = function () {
                         online_status.textContent = ''
 
                     img_center.src = "./assets/images/default.png"
-                    img_link.href = "http://tibia.com"
                     not_found.textContent = data.characters.error
                 }
                 else {
