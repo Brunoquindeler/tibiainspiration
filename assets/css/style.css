@@ -5,27 +5,24 @@ body {
     color:#D1A233;
     padding-bottom: 12rem;
     font-family: 'Langar', cursive;
+    place-content: center;
+    text-align: center;
+    display: grid;
 }
 
 header {
     padding: 0.1rem;
-    text-align: center;
     font-size: 1.2rem;
 }
 
 main {
-    align-items: center;
-    align-self: center;
-    align-content: center;
     justify-content: center;
     background-color: #191C21;
     position: relative;
-    display: grid;
 }
 
 footer {
     background-color: #191C21;
-    text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -45,10 +42,6 @@ table caption {
     font-size: 1.5rem;
 }
 
-h2 {
-    text-align: center;
-}
-
 a {
     text-decoration: none;
     font-family: bold;
@@ -59,17 +52,9 @@ a:hover {
     color: lawngreen;
 }
 
-.align-center {
-    justify-content: center;
-    position: relative;
-    display: grid;
-}
-
 .online_status {
     position: relative;
     font-size: 1.1rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -87,7 +72,12 @@ a:hover {
     padding: 0.5rem;
     margin-left: 0.5rem;
     border: none;
-    border-radius: 10%;
+    border-radius: 5%;
+}
+
+.search button#btn_search:hover {
+    background-color: #6b4c09;
+    color: rgb(255, 255, 255, 0.8);
 }
 
 /* Habilitar quando tiver mais opções no menu */

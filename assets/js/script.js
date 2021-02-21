@@ -1,11 +1,13 @@
 let show_character_name = document.querySelector("#show_character_name");
 let show_status = document.querySelector("#show_status");
 let online_status = document.querySelector("#online_status");
+// let img_link = document.querySelector("#img_link");
 let img_center = document.querySelector("#img_center");
 let table_character_info = document.querySelector("#table_character_info")
 let character_name_search = document.querySelector("#character_name_search");
 let btn_search = document.querySelector("#btn_search");
 let not_found = document.querySelector("#not_found");
+
 
 character_name_search.addEventListener('keyup', function(e){
     var key = e.which || e.keyCode;
@@ -40,7 +42,8 @@ btn_search.onclick = function() {
                     if (online_status)
                         online_status.textContent = ''
                         
-                    img_center.src = "./assests/images/default.png"
+                    img_center.src = "./assets/images/default.png"
+                    img_link.href = "http://tibia.com"
                     not_found.textContent = data.characters.error
                 }
                 else {
@@ -60,16 +63,6 @@ btn_search.onclick = function() {
                         show_status.textContent = "OFFLINE"
                         show_status.style.color = "red"
                     }
-                
-                    // Character Images
-                    if (data.characters.data.vocation === "Knight" || data.characters.data.vocation === "Elite Knight")
-                        img_center.src = "./assets/images/knight.png"
-                    else if (data.characters.data.vocation === "Druid" || data.characters.data.vocation === "Elder Druid")
-                        img_center.src = "./assets/images/druid.png"
-                    else if (data.characters.data.vocation === "Paladin" || data.characters.data.vocation === "Royal Paladin")
-                        img_center.src = "./assets/images/paladin.png"
-                    else if (data.characters.data.vocation === "Sorcerer" || data.characters.data.vocation === "Master Sorcerer")
-                        img_center.src = "./assets/images/sorcerer.png"
                     
                     
                     // Table Info
@@ -94,38 +87,78 @@ btn_search.onclick = function() {
                                 '<tr>',
                                     '<td>Sex: </td>',
                                     '<td>' + transformText(data.characters.data.sex) + '</td>',
+                                    '<td rowspan="2"><img id="gif_table" src=""></img></td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>Vocation: </td>',
-                                    '<td>' + data.characters.data.vocation + '</td>',
+                                    '<td> <a id="img_link" href="#" target="_blank">' + data.characters.data.vocation + '</a></td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>Level: </td>',
-                                    '<td>' + data.characters.data.level + '</td>',
+                                    '<td colspan="2">' + data.characters.data.level + '</td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>Achievement Points: </td>',
-                                    '<td>' + data.characters.data.achievement_points + '</td>',
+                                    '<td colspan="2">' + data.characters.data.achievement_points + '</td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>World: </td>',
-                                    '<td>' + data.characters.data.world + '</td>',
+                                    '<td colspan="2">' + data.characters.data.world + '</td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>Residence: </td>',
-                                    '<td>' + data.characters.data.residence + '</td>',
+                                    '<td colspan="2">' + data.characters.data.residence + '</td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>Last Login: </td>',
-                                    '<td>' + date.toLocaleString() + '</td>',
+                                    '<td colspan="2">' + date.toLocaleString() + '</td>',
                                 '</tr>',
                                 '<tr>',
                                     '<td>Account Status: </td>',
-                                    '<td id="td_account_status">' + data.characters.data.account_status + '</td>',
+                                    '<td id="td_account_status" colspan="2">' + data.characters.data.account_status + '</td>',
                                 '</tr>',
                                 '</tbody>',
                             '</table>',
                     ].join("\n");
+
+                    // console.log(data.characters.data.vocation)
+                    // Character Images
+                    if (data.characters.data.vocation === "Knight" || data.characters.data.vocation === "Elite Knight") {
+                        img_center.src = "./assets/images/knight.png"
+                        img_link.href = "https://www.tibiawiki.com.br/wiki/Knight"
+                        if (data.characters.data.sex === "male")
+                            gif_table.src = "./assets/images/knight_male.gif"
+                        else gif_table.src = "./assets/images/knight_female.gif"
+                    }
+                    else if (data.characters.data.vocation === "Druid" || data.characters.data.vocation === "Elder Druid") {
+                        img_center.src = "./assets/images/druid.png"
+                        img_link.href = "https://www.tibiawiki.com.br/wiki/Druid"
+                        if (data.characters.data.sex === "male")
+                            gif_table.src = "./assets/images/druid_male.gif"
+                        else gif_table.src = "./assets/images/druid_female.gif"
+                    }
+                    else if (data.characters.data.vocation === "Paladin" || data.characters.data.vocation === "Royal Paladin") {
+                        img_center.src = "./assets/images/paladin.png"
+                        img_link.href = "https://www.tibiawiki.com.br/wiki/Paladin"
+                        if (data.characters.data.sex === "male")
+                            gif_table.src = "./assets/images/paladin_male.gif"
+                        else gif_table.src = "./assets/images/paladin_female.gif"
+                    }
+                    else if (data.characters.data.vocation === "Sorcerer" || data.characters.data.vocation === "Master Sorcerer") {
+                        img_center.src = "./assets/images/sorcerer.png"
+                        img_link.href = "https://www.tibiawiki.com.br/wiki/Sorcerer"
+                        if (data.characters.data.sex === "male")
+                            gif_table.src = "./assets/images/sorcerer_male.gif"
+                        else gif_table.src = "./assets/images/sorcerer_female.gif"
+                    }
+                    else {
+                        img_center.src = "./assets/images/default.png"
+                        img_link.href = "https://www.tibiawiki.com.br/wiki/Voca%C3%A7%C3%A3o"
+                        if (data.characters.data.sex === "male")
+                            gif_table.src = "./assets/images/none_male.gif"
+                        else gif_table.src = "./assets/images/none_female.gif"
+                    }
+
 
                     // Estilizando o account_status
                     let td_account_status = document.querySelector("#td_account_status");
