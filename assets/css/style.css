@@ -34,6 +34,11 @@ footer {
 table {
     position: relative;
     font-weight:900;
+    border-color: #D1A233;
+}
+
+table td {
+    border: none;
 }
 
 table caption {

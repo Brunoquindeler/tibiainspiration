@@ -14,8 +14,6 @@ Neste projeto é consumido a [**API**]("http://https://www.redhat.com/pt-br/topi
 * **Fetch**
 * **Callbacks**
 * **Responsividade**
-
-
 <h2 align="center">Imagem ilustrativa</h2>
   <p align="center">
     <img width="600" src="./assets/images/tibiainspiration_screenshot.png" alt="Imagem ilustrativa">

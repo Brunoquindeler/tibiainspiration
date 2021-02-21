@@ -9,39 +9,39 @@ let btn_search = document.querySelector("#btn_search");
 let not_found = document.querySelector("#not_found");
 
 
-character_name_search.addEventListener('keyup', function(e){
+character_name_search.addEventListener('keyup', function (e) {
     var key = e.which || e.keyCode;
     if (key == 13) { // Código da tecla enter
-      btn_search.onclick();
+        btn_search.onclick();
     }
 });
 
 
-btn_search.onclick = function() {
+btn_search.onclick = function () {
     if (character_name_search.value != '') {
         let character_search_final = character_name_search.value.replace(" ", "+");
         let URL = "https://api.tibiadata.com/v2/characters/" + character_search_final + ".json";
 
         fetch(URL)
-            .then(function(response){
+            .then(function (response) {
                 if (!response.ok) throw new Error("Erro ao  executar a requisição");
                 return response.json();
             })
-            .then(function(data){
+            .then(function (data) {
                 console.log(data);
 
-                if (data.characters.error){
+                if (data.characters.error) {
                     console.log("Não existe");
-                    
-                    if (show_character_name) 
+
+                    if (show_character_name)
                         show_character_name.textContent = ''
                     if (show_status)
                         show_status.textContent = ''
-                    if(table_character_info)
+                    if (table_character_info)
                         table_character_info.textContent = ''
                     if (online_status)
                         online_status.textContent = ''
-                        
+
                     img_center.src = "./assets/images/default.png"
                     img_link.href = "http://tibia.com"
                     not_found.textContent = data.characters.error
@@ -63,8 +63,8 @@ btn_search.onclick = function() {
                         show_status.textContent = "OFFLINE"
                         show_status.style.color = "red"
                     }
-                    
-                    
+
+
                     // Table Info
 
                     // Transforma texto em minusculo e primeira letra em maiúsculo
@@ -79,46 +79,46 @@ btn_search.onclick = function() {
 
                     // Formatando a data
                     const date = new Date(data.characters.data.last_login[0].date)
-                    
+
                     table_character_info.innerHTML = [
                         '<table border="1">',
                         '<caption>CHARACTER INFO</caption>',
                         '<tbody>',
-                                '<tr>',
-                                    '<td>Sex: </td>',
-                                    '<td>' + transformText(data.characters.data.sex) + '</td>',
-                                    '<td rowspan="2"><img id="gif_table" src=""></img></td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>Vocation: </td>',
-                                    '<td> <a id="img_link" href="#" target="_blank">' + data.characters.data.vocation + '</a></td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>Level: </td>',
-                                    '<td colspan="2">' + data.characters.data.level + '</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>Achievement Points: </td>',
-                                    '<td colspan="2">' + data.characters.data.achievement_points + '</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>World: </td>',
-                                    '<td colspan="2">' + data.characters.data.world + '</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>Residence: </td>',
-                                    '<td colspan="2">' + data.characters.data.residence + '</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>Last Login: </td>',
-                                    '<td colspan="2">' + date.toLocaleString() + '</td>',
-                                '</tr>',
-                                '<tr>',
-                                    '<td>Account Status: </td>',
-                                    '<td id="td_account_status" colspan="2">' + data.characters.data.account_status + '</td>',
-                                '</tr>',
-                                '</tbody>',
-                            '</table>',
+                        '<tr>',
+                        '<td>Sex: </td>',
+                        '<td>' + transformText(data.characters.data.sex) + '</td>',
+                        '<td rowspan="2"><img id="gif_table" src=""></img></td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>Vocation: </td>',
+                        '<td> <a id="img_link" href="#" target="_blank">' + data.characters.data.vocation + '</a></td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>Level: </td>',
+                        '<td colspan="2">' + data.characters.data.level + '</td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>Achievement Points: </td>',
+                        '<td colspan="2">' + data.characters.data.achievement_points + '</td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>World: </td>',
+                        '<td colspan="2">' + data.characters.data.world + '</td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>Residence: </td>',
+                        '<td colspan="2">' + data.characters.data.residence + '</td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>Last Login: </td>',
+                        '<td colspan="2">' + date.toLocaleString() + '</td>',
+                        '</tr>',
+                        '<tr>',
+                        '<td>Account Status: </td>',
+                        '<td id="td_account_status" colspan="2">' + data.characters.data.account_status + '</td>',
+                        '</tr>',
+                        '</tbody>',
+                        '</table>',
                     ].join("\n");
 
                     // console.log(data.characters.data.vocation)
@@ -163,16 +163,16 @@ btn_search.onclick = function() {
                     // Estilizando o account_status
                     let td_account_status = document.querySelector("#td_account_status");
                     if (data.characters.data.account_status === "Premium Account") {
-                        td_account_status.style.color = "lawngreen" ;
+                        td_account_status.style.color = "lawngreen";
                     } else {
                         td_account_status.style.color = "red";
                     }
-                    
+
                 }
-                
+
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.error(error);
-        });
+            });
     }
 };
