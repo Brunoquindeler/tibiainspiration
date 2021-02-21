@@ -26,10 +26,6 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    justify-content: space-between;
-}
-
-footer p {
     text-indent: 1em;
 }
 
