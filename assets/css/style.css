@@ -28,7 +28,10 @@ footer {
     display: grid;
     bottom: 0;
     width: 100%;
-    text-indent: 1em;
+}
+
+footer a {
+    padding: 0.5rem;
 }
 
 table {
@@ -44,6 +47,10 @@ table td {
 table caption {
     font-size: 1.5rem;
     font-family: 'Langar', cursive;
+}
+
+.table_character_info {
+    display: grid;
 }
 
 a {
@@ -63,6 +70,11 @@ p {
 
 ul {
     list-style: none;
+    padding: 0 1rem;
+}
+
+button {
+    cursor: pointer;
 }
 
 .online_status {
