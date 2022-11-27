@@ -24,7 +24,7 @@ if (btn_search) {
     btn_search.onclick = function () {
         if (character_name_search.value != '') {
             let character_search_final = character_name_search.value.replace(" ", "+");
-            let URL = "https://api.tibiadata.com/v2/characters/" + character_search_final + ".json";
+            let URL = "https://api.tibiadata.com/v3/character/" + character_search_final;
 
             fetch(URL)
                 .then(function (response) {
@@ -35,8 +35,6 @@ if (btn_search) {
                     console.log(data);
 
                     if (data.characters.error) {
-                        console.log("Não existe");
-
                         if (show_character_name)
                             show_character_name.textContent = ''
                         if (show_status)
@@ -50,16 +48,14 @@ if (btn_search) {
                         not_found.textContent = data.characters.error
                     }
                     else {
-                        console.log("Foi");
-
                         not_found.textContent = ''
                         // online_status.textContent = 'Status: '
 
                         // Character Name
-                        show_character_name.textContent = data.characters.data.name
+                        show_character_name.textContent = data.characters.character.name
 
                         // Character Status
-                        if (data.characters.data.status === "online") {
+                        if (data.characters.character.status === "online") {
                             show_status.textContent = "ONLINE"
                             show_status.style.color = "lawngreen"
                         } else {
@@ -71,17 +67,12 @@ if (btn_search) {
                         // Table Info
 
                         // Transforma texto em minusculo e primeira letra em maiúsculo
-                        function transformText(text) {
-                            var words = text.toLowerCase().split(" ");
-                            for (var a = 0; a < words.length; a++) {
-                                var w = words[a];
-                                words[a] = w[0].toUpperCase() + w.slice(1);
-                            }
-                            return words.join(" ");
+                        function transformTextCharAtToUpper(text) {
+                            return text.charAt(0).toUpperCase() + text.slice(1)
                         };
 
                         // Formatando a data
-                        const date = new Date(data.characters.data.last_login[0].date);
+                        const date = new Date(data.characters.character.last_login);
 
                         table_character_info.innerHTML = [
                             '<table border="1">',
@@ -89,28 +80,28 @@ if (btn_search) {
                             '<tbody>',
                             '<tr>',
                             '<td>Sex: </td>',
-                            '<td>' + transformText(data.characters.data.sex) + '</td>',
+                            '<td>' + transformTextCharAtToUpper(data.characters.character.sex) + '</td>',
                             '<td rowspan="2"><img id="gif_table" src=""></img></td>',
                             '</tr>',
                             '<tr>',
                             '<td>Vocation: </td>',
-                            '<td> <a id="img_link" href="#" target="_blank">' + data.characters.data.vocation + '</a></td>',
+                            '<td> <a id="img_link" href="#" target="_blank">' + data.characters.character.vocation + '</a></td>',
                             '</tr>',
                             '<tr>',
                             '<td>Level: </td>',
-                            '<td colspan="2">' + data.characters.data.level + '</td>',
+                            '<td colspan="2">' + data.characters.character.level + '</td>',
                             '</tr>',
                             '<tr>',
                             '<td>Achievement Points: </td>',
-                            '<td colspan="2">' + data.characters.data.achievement_points + '</td>',
+                            '<td colspan="2">' + data.characters.character.achievement_points + '</td>',
                             '</tr>',
                             '<tr>',
                             '<td>World: </td>',
-                            '<td colspan="2">' + data.characters.data.world + '</td>',
+                            '<td colspan="2">' + data.characters.character.world + '</td>',
                             '</tr>',
                             '<tr>',
                             '<td>Residence: </td>',
-                            '<td colspan="2">' + data.characters.data.residence + '</td>',
+                            '<td colspan="2">' + data.characters.character.residence + '</td>',
                             '</tr>',
                             '<tr>',
                             '<td>Last Login: </td>',
@@ -118,46 +109,46 @@ if (btn_search) {
                             '</tr>',
                             '<tr>',
                             '<td>Account Status: </td>',
-                            '<td id="td_account_status" colspan="2">' + data.characters.data.account_status + '</td>',
+                            '<td id="td_account_status" colspan="2">' + data.characters.character.account_status + '</td>',
                             '</tr>',
                             '</tbody>',
                             '</table>',
                         ].join("\n");
 
-                        // console.log(data.characters.data.vocation)
+                        // console.log(data.characters.character.vocation)
                         // Character Images
-                        if (data.characters.data.vocation === "Knight" || data.characters.data.vocation === "Elite Knight") {
+                        if (data.characters.character.vocation === "Knight" || data.characters.character.vocation === "Elite Knight") {
                             img_center.src = "./assets/images/knight.png"
                             img_link.href = "https://www.tibiawiki.com.br/wiki/Knight"
-                            if (data.characters.data.sex === "male")
+                            if (data.characters.character.sex === "male")
                                 gif_table.src = "./assets/images/knight_male.gif"
                             else gif_table.src = "./assets/images/knight_female.gif"
                         }
-                        else if (data.characters.data.vocation === "Druid" || data.characters.data.vocation === "Elder Druid") {
+                        else if (data.characters.character.vocation === "Druid" || data.characters.character.vocation === "Elder Druid") {
                             img_center.src = "./assets/images/druid.png"
                             img_link.href = "https://www.tibiawiki.com.br/wiki/Druid"
-                            if (data.characters.data.sex === "male")
+                            if (data.characters.character.sex === "male")
                                 gif_table.src = "./assets/images/druid_male.gif"
                             else gif_table.src = "./assets/images/druid_female.gif"
                         }
-                        else if (data.characters.data.vocation === "Paladin" || data.characters.data.vocation === "Royal Paladin") {
+                        else if (data.characters.character.vocation === "Paladin" || data.characters.character.vocation === "Royal Paladin") {
                             img_center.src = "./assets/images/paladin.png"
                             img_link.href = "https://www.tibiawiki.com.br/wiki/Paladin"
-                            if (data.characters.data.sex === "male")
+                            if (data.characters.character.sex === "male")
                                 gif_table.src = "./assets/images/paladin_male.gif"
                             else gif_table.src = "./assets/images/paladin_female.gif"
                         }
-                        else if (data.characters.data.vocation === "Sorcerer" || data.characters.data.vocation === "Master Sorcerer") {
+                        else if (data.characters.character.vocation === "Sorcerer" || data.characters.character.vocation === "Master Sorcerer") {
                             img_center.src = "./assets/images/sorcerer.png"
                             img_link.href = "https://www.tibiawiki.com.br/wiki/Sorcerer"
-                            if (data.characters.data.sex === "male")
+                            if (data.characters.character.sex === "male")
                                 gif_table.src = "./assets/images/sorcerer_male.gif"
                             else gif_table.src = "./assets/images/sorcerer_female.gif"
                         }
                         else {
                             img_center.src = "./assets/images/default.png"
                             img_link.href = "https://www.tibiawiki.com.br/wiki/Voca%C3%A7%C3%A3o"
-                            if (data.characters.data.sex === "male")
+                            if (data.characters.character.sex === "male")
                                 gif_table.src = "./assets/images/none_male.gif"
                             else gif_table.src = "./assets/images/none_female.gif"
                         }
@@ -165,7 +156,7 @@ if (btn_search) {
 
                         // Estilizando o account_status
                         let td_account_status = document.querySelector("#td_account_status");
-                        if (data.characters.data.account_status === "Premium Account") {
+                        if (data.characters.character.account_status === "Premium Account") {
                             td_account_status.style.color = "lawngreen";
                         } else {
                             td_account_status.style.color = "red";
